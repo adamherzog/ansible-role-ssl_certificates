@@ -1,0 +1,7 @@
+# roles/ssl_certificates/defaults/main.yml
+---
+ssl_certificates: []
+ssl_private_keys: []
+
+ssl_certificate_files: []
+ssl_private_key_files: []

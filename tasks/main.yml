@@ -1,0 +1,41 @@
+# roles/ssl_certificates/tasks/main.yml
+---
+- name: create ssl certificates
+  copy:
+    content: "{{ item.content }}"
+    dest: /etc/pki/tls/certs/{{ item.name }}
+    owner: root
+    group: root
+    mode: 0644
+  no_log: true
+  with_items: ssl_certificates
+
+- name: create ssl private keys
+  copy:
+    content: "{{ item.content }}"
+    dest: /etc/pki/tls/private/{{ item.name }}
+    owner: root
+    group: root
+    mode: 0600
+  no_log: true
+  with_items: ssl_private_keys
+
+- name: copy over ssl certificate files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/pki/tls/certs
+    owner: root
+    group: root
+    mode: 0644
+  no_log: true
+  with_items: ssl_certificate_files
+
+- name: copy over ssl private key files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/pki/tls/private
+    owner: root
+    group: root
+    mode: 0600
+  no_log: true
+  with_items: ssl_private_key_files
