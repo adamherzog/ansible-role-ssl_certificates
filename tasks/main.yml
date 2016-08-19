@@ -8,7 +8,7 @@
     group: root
     mode: 0644
   no_log: true
-  with_items: ssl_certificates
+  with_items: '{{ ssl_certificates }}'
 
 - name: create ssl private keys
   copy:
@@ -18,7 +18,7 @@
     group: root
     mode: 0600
   no_log: true
-  with_items: ssl_private_keys
+  with_items: '{{ ssl_private_keys }}'
 
 - name: copy over ssl certificate files
   copy:
@@ -28,7 +28,7 @@
     group: root
     mode: 0644
   no_log: true
-  with_items: ssl_certificate_files
+  with_items: '{{ ssl_certificate_files }}'
 
 - name: copy over ssl private key files
   copy:
@@ -38,4 +38,4 @@
     group: root
     mode: 0600
   no_log: true
-  with_items: ssl_private_key_files
+  with_items: '{{ ssl_private_key_files }}'
